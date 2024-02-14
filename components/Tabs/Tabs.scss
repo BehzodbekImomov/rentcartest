@@ -1,0 +1,79 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
+.mui-1wf8b0h-MuiTabs-flexContainer{
+    -ms-flex-pack: distribute !important;
+        justify-content: space-around !important;
+}
+.mui-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected{
+    color: var(--yellow) !important;
+    opacity: 1 !important;
+}
+.mui-1q2h7u5{
+    min-width: 18px !important;
+}
+.mui-1h9z7r5-MuiButtonBase-root-MuiTab-root{
+    min-width: 18 !important;
+}
+.mui-1q2h7u5.Mui-selected{
+    color: var(--yellow) !important;
+    opacity: 1 !important; 
+}
+.mui-1h9z7r5-MuiButtonBase-root-MuiTab-root{
+    font-size: 20px !important;
+    color: var(--white) !important;
+}
+.mui-mmst5v{
+    background-color: var(--black) !important;
+   
+    // opacity: 0.6 !important;
+}
+.mui-1oi56eo{
+    border-color: #90A3BF !important;   
+}
+.mui-1q2h7u5{
+    color: var(--white) !important;
+    opacity: 0.6;
+    text-align: center !important;
+    font-family: "Plus Jakarta Sans" !important;
+    font-size: 20px !important;
+    font-style: normal !important;
+    font-weight: 500 !important;
+    line-height: 150% !important; /* 33px */
+    letter-spacing: -0.44px !important;
+}
+.mui-1l4w6pd{
+    justify-content: space-around !important; 
+}
+@media (max-width:990px) {
+    .mui-1h9z7r5-MuiButtonBase-root-MuiTab-root{
+        font-size: 18px !important;
+        
+    } 
+    .mui-1q2h7u5{
+        font-size: 18px !important; 
+    }
+}
+@media (max-width:576px) {
+    .mui-1h9z7r5-MuiButtonBase-root-MuiTab-root{
+        font-size: 14px !important;
+        
+    } 
+    .mui-1q2h7u5{
+        font-size: 14px !important;
+        
+    }
+}
+@media (max-width:430px) {
+    .mui-1h9z7r5-MuiButtonBase-root-MuiTab-root{
+        font-size: 9px !important;
+        
+    } 
+    .mui-1q2h7u5{
+        font-size: 9px !important;
+    }
+}

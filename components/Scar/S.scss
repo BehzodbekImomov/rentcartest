@@ -1,0 +1,297 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
+.card_cars {
+  padding: 60px 0 90px !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.popular_car {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-evenly;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  gap: 22px;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 42px 55px 60px;
+  li {
+    width: 304px;
+    height: 388px;
+    border-radius: 10px;
+    background: #c4c4c4;
+    .head_card {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      padding: 30px 27px;
+      img {
+      }
+      p {
+        color: var(--Secondary-500, #1a202c);
+
+        /* Bold/Type@20 */
+        font-family: "Plus Jakarta Sans";
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 150%; /* 30px */
+        letter-spacing: -0.6px;
+      }
+    }
+    .food_card {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      padding: 228px 24px 27px;
+      p {
+        color: var(--Secondary-500, #1a202c);
+        font-family: "Plus Jakarta Sans";
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+      }
+      span {
+        color: var(--Black, #1a202c);
+        font-family: "Plus Jakarta Sans";
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+      }
+      button {
+        color: var(--black);
+        width: 120px;
+        height: 44px;
+
+        text-align: center;
+
+        /* Semibold/Type@16 */
+        font-family: "Plus Jakarta Sans";
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 150%; /* 24px */
+        letter-spacing: -0.32px;
+      }
+    }
+  }
+}
+.btn {
+  color: #101010 !important;
+  text-align: center !important;
+
+  /* Semibold/Type@16 */
+  font-family: "Roboto","Helvetica","Arial",sans-serif !important ;
+  font-size: 16px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 150% !important; /* 24px */
+  letter-spacing: -0.32px !important;
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 186px !important;
+  height: 44px !important;
+  padding: 0px 20px !important;
+  justify-content: center !important ;
+  -webkit-box-align: center !important;
+  -ms-flex-align: center !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+@media (max-width: 990px) {
+  .card_cars {
+    padding: 40px 1px 80px !important;
+  }
+  .popular_car {
+    gap: 20px;
+
+    padding: 0px 15px 60px;
+    li {
+      width: 280px;
+      height: 368px;
+      background-repeat: no-repeat;
+      object-fit: cover;
+      background-size: 100% 100%;
+      .head_card {
+        padding: 30px 27px;
+
+        p {
+          font-size: 18px;
+        }
+      }
+      .food_card {
+        padding: 208px 24px 27px;
+        p {
+          font-size: 17px;
+        }
+        span {
+          font-size: 13px;
+        }
+        button {
+          color: var(--black);
+          width: 100px;
+          height: 40px;
+
+          text-align: center;
+
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .card_cars {
+    padding: 25px 1px 25px !important;
+  }
+  .popular_car {
+    display: none !important;
+    gap: 20px;
+  }
+  .btn {
+    font-size: 14px !important;
+    // margin-top: 50px !important;
+    width: 166px !important;
+    height: 40px !important;
+    padding: 0px 20px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .card_cars {
+    // padding: 40px 1px 80px !important;
+  }
+  .popular_car {
+    gap: 10px;
+
+    padding: 0px 0px 60px;
+    li {
+      width: 180px;
+      height: 308px;
+
+      object-fit: cover !important;
+      background-size: 100% 100% !important;
+      .head_card {
+        padding: 30px 18px;
+
+        p {
+          font-size: 13px;
+        }
+      }
+      .food_card {
+        padding: 160px 16px 27px;
+        p {
+          font-size: 12px;
+        }
+        span {
+          font-size: 8px;
+        }
+        button {
+          color: var(--black);
+          width: 100%;
+          height: 20px;
+
+          text-align: center;
+
+          font-size: 6px;
+        }
+      }
+    }
+  }
+  .btn {
+    font-size: 14px !important;
+
+    width: 166px !important;
+    height: 40px !important;
+    padding: 0px 20px !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .popular_car {
+    gap: 5px;
+
+    padding: 0px 0px 60px;
+    li {
+      width: 160px;
+      height: 280px;
+
+      object-fit: cover !important;
+      background-size: 100% 100% !important;
+      .head_card {
+        padding: 30px 18px;
+
+        p {
+          font-size: 11px;
+        }
+      }
+      .food_card {
+        padding: 140px 16px 27px;
+        gap: 6px;
+        p {
+          font-size: 10px;
+        }
+        span {
+          font-size: 8px;
+        }
+        button {
+          color: var(--black);
+
+          height: 20px;
+
+          text-align: center;
+
+          font-size: 6px;
+        }
+      }
+    }
+  }
+  .btn {
+    font-size: 10px !important;
+
+    width: 126px !important;
+    height: 35px !important;
+    padding: 0px 20px !important;
+  }
+}

@@ -1,0 +1,233 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
+nav {
+  background-color: var(--dark);
+  padding: 27px 68px 30px;
+  position: fixed;
+  top: 0px;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  .navigations {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+
+    .menu {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      gap: 38px;
+
+      li {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        &:hover li a::after {
+          width: 100%;
+        }
+        a {
+          font-family: "Plus Jakarta Sans";
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 150%; /* 24px */
+          letter-spacing: -0.48px;
+          color: var(--white);
+
+          &:hover {
+            opacity: 0.75;
+            -webkit-transition: all 0.3s ease-in;
+            -o-transition: all 0.3s ease-in;
+            transition: all 0.3s ease-in;
+          }
+        }
+        button {
+          padding: 7.5px 21px;
+          font-family: "Plus Jakarta Sans";
+          color: var(--black);
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 150%; /* 21px */
+          letter-spacing: -0.42px;
+        }
+      }
+      .registr {
+        a {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          align-items: center;
+          gap: 18px;
+        }
+      }
+    }
+  }
+}
+
+.line {
+  width: 1px;
+  height: 21px;
+  opacity: 0.8;
+  background: #fec31d;
+}
+
+/* >>>>>>>>>>>>>>MEDIA <<<<<<<<<<<<<<  */
+
+@media (min-width: 992px) {
+  .mui-1e6y48t-MuiButtonBase-root-MuiButton-root {
+    display: none !important;
+    // position: absolute !important;
+    // left: 4000px;
+  }
+  .mui-1ujsas3{
+    display: none !important; 
+  }
+  }
+
+
+@media (max-width: 990px) {
+  nav {
+    .navigations {
+      .menu {
+        display: none;
+      }
+    }
+  }
+  .line {
+    display: none;
+  }
+  .menu {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 38px;
+    flex-direction: column;
+    align-items: center;
+
+    li {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      &:hover li a::after {
+        width: 100%;
+      }
+      a {
+        font-family: "Plus Jakarta Sans";
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 150%; /* 24px */
+        letter-spacing: -0.48px;
+        color: var(--white);
+
+        &:hover {
+          opacity: 0.75;
+          -webkit-transition: all 0.3s ease-in;
+          -o-transition: all 0.3s ease-in;
+          transition: all 0.3s ease-in;
+        }
+      }
+      button {
+        padding: 7.5px 21px;
+        font-family: "Plus Jakarta Sans";
+        color: var(--black);
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 150%; /* 21px */
+        letter-spacing: -0.42px;
+      }
+    }
+    .registr {
+      a {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        gap: 18px;
+      }
+    }
+  }
+  .mui-1160xiw-MuiPaper-root-MuiDrawer-paper {
+    background-color: var(--black) !important;
+  }
+  .mui-1ab2xsx{
+    background-color: var(--black) !important;
+  }
+}
+@media (max-width: 576px) {
+  nav {
+    padding-left: 40px;
+    padding-right: 40px;
+    img {
+      width: 60px;
+      height: 30px;
+      object-fit: fill;
+    }
+  
+  }
+  .menu {
+     padding-top: 50px;
+    gap: 38px;
+    justify-content: center;
+    align-items:center;
+padding-right: 40px !important;
+    li {
+    
+      &:hover li a::after {
+        width: 100%;
+      }
+      a {
+      
+        font-size: 14px;
+     
+
+        &:hover {
+          opacity: 0.75;
+          -webkit-transition: all 0.3s ease-in;
+          -o-transition: all 0.3s ease-in;
+          transition: all 0.3s ease-in;
+        }
+      }
+      button {
+        padding: 7.5px 21px;
+      
+        font-size: 14px;
+     
+      }
+    }
+    .registr {
+      a {
+    
+        gap: 18px;
+      }
+    }
+  }
+  .mui-16ac5r2-MuiButtonBase-root-MuiListItemButton-root{
+    padding-left: 0 !important;
+    padding-right: 35px !important;
+  }
+}

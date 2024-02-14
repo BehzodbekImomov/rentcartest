@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+html,
+body {
+  position: relative !important;
+  height: 100%;
+  scroll-behavior: smooth;
+  transition: all 5s ease-in;
+  /* background-color: var(--black); */
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  --dark:#000;
+  --black:#1A202C;
+  --white:#FFF;
+  --gray:#F6F7F9;
+  --gray2:#F3F3F3;
+  --yellow:#FEC31D;
+}
+
+
+.loadCont{
+  position: fixed;
+  z-index: 10000;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  opacity: 1;
+  /* background-color: #1A202C; */
+ 
+}
+
+
+.fadbeack{
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
+z-index: 1000;
+
+}
+.box_fad{
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  background-color: #FEC31D;
+  box-shadow: 0px 0px 20px 5px rgb(29, 120, 190);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+ul{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+}
+.container_custom{
+  max-width: 1440px;
+  margin: 0 auto;
+  /* padding: 30px 50px; */
+}
+button{
+  cursor: pointer;
+}
+.mui-n70jm4-MuiInputBase-root-MuiInput-root-MuiSelect-root::before{
+  /* content: "" !important; */
+  border-bottom: none !important;
+}
+.mui-12i7wg6-MuiPaper-root-MuiDrawer-paper{
+  background-color: #1976d2 !important;
+}
