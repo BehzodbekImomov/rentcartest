@@ -48,7 +48,7 @@ export default function CustomSwiper({ popular, loading }) {
             <SwiperSlide key={e.id}>
               <li
                 style={{
-                  backgroundImage: `url(https://${e?.image[0]?.body.replace(
+                  backgroundImage: `url(https://rent-${e?.image[0]?.body.replace(
                     "/home/portofin/",
                     ""
                   )})`,
