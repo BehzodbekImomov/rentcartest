@@ -32,7 +32,7 @@ export default function Popular_car() {
         const res = await request.get(`${REST.CARS}cars/1`);
         setPopular(res?.data);
       } catch (err) {
-        toast.error(err?.message);
+       console.log(err);
       } finally {
         setIsLoading(false);
       }
@@ -51,7 +51,7 @@ export default function Popular_car() {
       setPopular(res?.data);
       setPage((prevPage) => prevPage + 1);
     } catch (err) {
-      toast.error(err?.message);
+      console.log(err);
     } finally {
       setIsLoading(false);
     }
@@ -67,7 +67,7 @@ export default function Popular_car() {
             <li
               key={e.id}
               style={{
-                backgroundImage: `url(https://${e?.image[0]?.body.replace(
+                backgroundImage: `url(https://rent-${e?.image[0]?.body.replace(
                   "/home/portofin/",
                   ""
                 )})`,
