@@ -13,9 +13,10 @@ import "./Car_carousel.scss";
 
 // import required modules
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
-import { carContext } from "@/context/CarContext";
-import Loading from "@/app/(public)/loading";
-import Image from "next/image";
+import Loading from "@/app/[locale]/(public)/loading";
+
+
+
 
 export default function CarCarousel({ data, loading }) {
   // const { carProducts } = useContext(carContext);
