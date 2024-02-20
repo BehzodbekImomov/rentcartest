@@ -8,9 +8,10 @@ import CustomSwiper from "../Sliders/CustomSwiper";
 import Link from "next/link";
 import { carContext } from "@/context/CarContext";
 import { request } from "@/request";
-import Loading from "@/app/(public)/loading";
+import Loading from "@/app/[locale]/(public)/loading";
 import { REST } from "@/constants/enpoint";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 export default function Scar() {
 
@@ -18,24 +19,24 @@ export default function Scar() {
   const [popular, setPopular] = useState([]);
   const [isLoading,setIsLoading]=useState(false)
   const [page, setPage] = useState(1);
-
+  const{t}=useTranslation()
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setIsLoading(true);
-        const res = await request.get(`${REST.CARS}cars/5`);
-        setPopular(res?.data);
-      } catch (err) {
-        console.log(err);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-  
-    fetchData();
-  
-  }, []); // Boş bağımlılık listesi, useEffect'in yalnızca ilk renderda çalışmasını sağlar
-  
+    getData();
+  }, []);
+
+  async function getData() {
+    try {
+      setIsLoading(true);
+      const res = await request.get(`${REST.CARS}cars/5`);
+      setPopular(res?.data);
+      setIsLoading(false);
+    } catch (err) {
+      // toast.error(err?.message);
+      console.log(err);
+    } finally {
+      setIsLoading(false);
+    }
+  }
 
   const handlePage = async () => {
     setPage(1);
@@ -45,6 +46,7 @@ export default function Scar() {
       setPopular(res?.data);
       setPage(prevPage => prevPage + 1);
     } catch (err) {
+      // toast.error(err?.message);
       console.log(err);
     } finally {
       setIsLoading(false);
@@ -61,10 +63,7 @@ export default function Scar() {
             <li
               key={e.id}
               style={{
-                backgroundImage: `url(https://rent-${e?.image[0]?.body.replace(
-                  "/home/portofin/",
-                  ""
-                )})`,
+                backgroundImage:`url(https://backend.intechs.uz/car/v1/image/${e?.image[0]?.id})`,
               }}
             >
               <div className="head_card">
@@ -118,7 +117,7 @@ export default function Scar() {
         onClick={handlePage}
         style={{ backgroundColor: "var(--white)", color: "" }}
       >
-        Show more
+        {t('car_button')}
       </Button>
     </div>
   );

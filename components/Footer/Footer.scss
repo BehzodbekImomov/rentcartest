@@ -82,6 +82,9 @@
             gap: 15px;
           }
         }
+        .btn_lang{
+          display: none;
+        }
       }
     }
     .line {
@@ -186,6 +189,9 @@ text-align: center;
             .network {
               gap: 45px;
             }
+          }
+          .btn_lang{
+            display: block;
           }
         }
       }

@@ -11,16 +11,17 @@ import CustomizedRating from "../Rating";
 import { Button, CircularProgress } from "@mui/material";
 import Link from "next/link";
 import { carContext } from "@/context/CarContext";
-import Loading from "@/app/(public)/loading";
+import Loading from "@/app/[locale]/(public)/loading";
 
 import "./styles.scss";
-// import { REST } from "@/constants/enpoint";
+import { REST } from "@/constants/enpoint";
+import { useTranslation } from "react-i18next";
 
-
+// import required modules
 
 export default function CustomSwiper({ popular, loading }) {
   const { dispatch } = useContext(carContext);
- 
+  const{t}=useTranslation()
   return (
     <>
       {loading ? (
@@ -48,15 +49,12 @@ export default function CustomSwiper({ popular, loading }) {
             <SwiperSlide key={e.id}>
               <li
                 style={{
-                  backgroundImage: `url(https://rent-${e?.image[0]?.body.replace(
-                    "/home/portofin/",
-                    ""
-                  )})`,
+                  backgroundImage: `url(https://backend.intechs.uz/car/v1/image/${e?.image[0]?.id})`,
                 }}
               >
                 <div className="head_card">
                   <p>{e?.brand}</p>
-                
+
                   <CustomizedRating />
                 </div>
                 <div className="food_card">
@@ -66,11 +64,11 @@ export default function CustomSwiper({ popular, loading }) {
                   <Link href={`order/${e?.id}`}>
                     {" "}
                     <Button
-                        loading={loading}
-                        loadingIndicator={
-                          <CircularProgress  color="secondary" size={20} />
-                        }
-                        // loadingPosition="end"
+                      loading={loading}
+                      loadingIndicator={
+                        <CircularProgress color="secondary" size={20} />
+                      }
+                      loadingPosition="end"
                       onClick={() =>
                         dispatch({
                           type: "add-to-cart",
@@ -82,15 +80,13 @@ export default function CustomSwiper({ popular, loading }) {
                       variant="contained"
                       style={{ background: "#FEC31D" }}
                     >
-                      Rent Now
+                     {t('car_button')}
                     </Button>
                   </Link>
                 </div>
               </li>
             </SwiperSlide>
           ))}
-
-         
         </Swiper>
       )}
     </>

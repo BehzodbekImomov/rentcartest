@@ -1,73 +1,88 @@
 "use client";
 import React, { useContext, useState } from "react";
-import CloudUploadIcon from "@mui/icons-material/CloudUpload";
-import { Button } from "@mui/material";
-import { idContext } from "@/context/IdContext";
-import Image from "next/image";
-import { REST } from "@/constants/enpoint";
 import { request } from "@/request";
+// import { idContext } from "../context/IdContext";
+import { idContext } from "@/context/IdContext";
+import { REST } from "@/constants/enpoint";
 
 import "./CreatePhoto.scss";
 
-const CreatePhoto = () => {
+export default function CreatePhoto() {
   const { idProducts } = useContext(idContext);
-  const [selectedFiles, setSelectedFiles] = useState([]);
 
-  const handleFileInputChange = (event) => {
-    const files = Array.from(event.target.files);
-    setSelectedFiles((prevSelectedFiles) => [...prevSelectedFiles, ...files]);
+  const [formSubmit, setFormSubmit] = useState({
+    photo1: null,
+    photo2: null,
+    photo3: null,
+    photo4: null,
+  });
+
+  const handleChange = (e) => {
+    setFormSubmit({ ...formSubmit, [e.target.name]: e.target.files[0] });
   };
 
-  const handleUpload = async () => {
-    if (selectedFiles.length > 0) {
-      const formData = new FormData();
-      selectedFiles.forEach((file) => {
-        formData.append("files", file);
-      });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-      formData.id = Number(idProducts);
-      console.log(formData);
-      try {
-        // const res = await request.post(REST.IMAGES, formData);
-      } catch (err) {}
+    const formData = new FormData();
+    Object.values(formSubmit).forEach((file) => {
+      if (file) {
+        formData.append("photos", file);
+      }
+    });
+    formData.id = Number(idProducts);
+    try {
+      await request.post("/image", formData); // Updated endpoint
+      setFormSubmit({
+        photo1: [],
+        photo2: [],
+        photo3: [],
+        photo4: [],
+      });
+    } catch (err) {
+      console.log(err);
     }
   };
 
   return (
     <div className="form_content">
-      <div style={{ display: "flex", gap: "5px" }}>
-        {selectedFiles.map((file, index) => (
-          <Image
-            style={{ borderRadius: "10px" }}
-            key={index}
-            src={URL.createObjectURL(file)}
-            alt={`Preview ${index + 1}`}
-            width={120}
-            height={100}
+      <div className="form_control">
+        <form onSubmit={handleSubmit}>
+          <input
+            required
+            name="photo1"
+            onChange={handleChange}
+            placeholder="Baggage"
+            type="file"
           />
-        ))}
+
+          <input
+            required
+            name="photo2"
+            onChange={handleChange}
+            placeholder="Brand"
+            type="file"
+          />
+
+          <input
+            required
+            name="photo3"
+            onChange={handleChange}
+            placeholder="Description"
+            type="file"
+          />
+
+          <input
+            required
+            name="photo4"
+            onChange={handleChange}
+            placeholder="Doors"
+            type="file"
+          />
+
+          <button type="submit">Create</button>
+        </form>
       </div>
-      <Button
-        component="label"
-        variant="contained"
-        startIcon={<CloudUploadIcon />}
-      >
-        Upload files
-        <input
-          type="file"
-          multiple
-          style={{ display: "none" }}
-          onChange={handleFileInputChange}
-        />
-      </Button>
-
-      <Button variant="contained" type="submit" onClick={handleUpload}>
-        Create
-      </Button>
-
-      <div></div>
     </div>
   );
-};
-
-export default CreatePhoto;
+}

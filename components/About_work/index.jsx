@@ -1,16 +1,17 @@
-
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 import "./About_work.scss";
 
 export default function About_work() {
+  const { t } = useTranslation();
   return (
     <section className="about_work" id="rental">
       <div className="container_custom">
         <div className="work_content">
-          <h3>How it work</h3>
+          <h3>{t("about_title")}</h3>
           <p className="paragraf">
-            With us you can rent a car on favorable terms
+            {t('about_desc')}
           </p>
         </div>
 
@@ -24,9 +25,9 @@ export default function About_work() {
                 height={50}
               />
             </div>
-            <h4>Choose Location</h4>
+            <h4>{t('about_loc')}</h4>
             <p>
-              You can pick up and leave the car in a city convenient for you.
+              {t('about_loc_desc')}
             </p>
           </li>
           <li>
@@ -34,10 +35,8 @@ export default function About_work() {
               <Image src="/images/data.png" alt="" width={45} height={45} />
             </div>
 
-            <h4>Choice a Date</h4>
-            <p>
-               You can book a car at a time convenient for you.
-            </p>
+            <h4>{t('about_date')}</h4>
+            <p>{t('about_date_desc')}</p>
           </li>
           <li>
             <div className="box_img">
@@ -49,10 +48,9 @@ export default function About_work() {
                 height={45}
               />
             </div>
-            <h4>Choice a Car</h4>
+            <h4>{t('about_car')}</h4>
             <p>
-               The largest selection of sports, luxury, premium,
-              econom category cars is only with us
+              {t('about_car_desc')}
             </p>
           </li>
         </ul>

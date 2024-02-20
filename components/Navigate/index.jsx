@@ -6,8 +6,11 @@ import { Button } from "@nextui-org/react";
 import "./Navigate.scss";
 
 import TemporaryDrawer from "../Drawer";
+import LanguageChanger from "../LanguageChanger";
+
 
 const Navigate = () => {
+ 
   return (
     <nav id="nav">
       <div className="container_custom navigations ">
@@ -53,9 +56,11 @@ const Navigate = () => {
           <li>
             <Button type="submit">Log In</Button>
           </li> */}
+          <LanguageChanger />
         </ul>
 
-        <TemporaryDrawer id="burger"
+        <TemporaryDrawer
+          id="burger"
           icon={<MenuIcon sx={{ color: "var(--white)" }} />}
           bg_color={"var(--black)"}
           title={
@@ -88,7 +93,6 @@ const Navigate = () => {
                   {/* <Image src="/svg/vector.svg" width={15} height={6} alt="" /> */}
                 </a>
               </li>
-          
             </ul>
           }
         />

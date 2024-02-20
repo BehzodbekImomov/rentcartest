@@ -1,12 +1,25 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { MenuItem, Select } from "@mui/material";
 import "./NativeSelect.scss";
+import { request } from "@/request";
+import { REST } from "@/constants/enpoint";
 export default function NativeSelectGroup({ name }) {
   const [age, setAge] = useState("");
+  const [sity, setSity] = useState([]);
+
+  useEffect(() => {
+    const getSitys = async () => {
+      try {
+        const res = await request.get(REST.SITYS);
+        setSity(res?.data);
+      } catch (err) {}
+    };
+    getSitys();
+  }, []);
 
   const handleChange = (event) => {
     setAge(event.target.value);
@@ -41,9 +54,11 @@ export default function NativeSelectGroup({ name }) {
         IconComponent={ExpandMoreIcon}
       >
         <MenuItem value="">{/* <em>None</em> */}</MenuItem>
-        <MenuItem value={10}>Ten</MenuItem>
-        <MenuItem value={20}>Twenty</MenuItem>
-        <MenuItem value={30}>Thirty</MenuItem>
+        {sity?.map((e) => (
+          <MenuItem key={e?.id} value={e?.id}>
+            {e?.name}
+          </MenuItem>
+        ))}
       </Select>
     </FormControl>
   );

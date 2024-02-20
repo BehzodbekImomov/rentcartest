@@ -10,13 +10,14 @@ import Scar from "../Scar";
 import TemporaryDrawer from "../Drawer";
 
 import "./Tabs.scss";
+import { useTranslation } from "react-i18next";
 
 export default function Tabs() {
   const [value, setValue] = useState("1");
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  console.log(value);
+  const{t}=useTranslation()
   return (
     <Box sx={{ width: "100%", bgcolor: "background.paper" }}>
       <TabContext value={value}>
@@ -35,11 +36,11 @@ export default function Tabs() {
             onChange={handleChange}
             aria-label="lab API tabs example"
           >
-            <Tab label="Sport" value="1" />
-            <Tab label="Premium" value="2" />
-            <Tab label="Luxur" value="3" />
-            <Tab label="SV" value="4" />
-            <Tab label="Econom" value="5" />
+            <Tab label={t('sport')} value="1" />
+            <Tab label={t('premium')} value="2" />
+            <Tab label={t('luxury')} value="3" />
+            <Tab label={t('sv')} value="4" />
+            <Tab label={t('econom')} value="5" />
           </TabList>
         </Box>
 

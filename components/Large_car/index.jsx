@@ -8,33 +8,34 @@ import CustomSwiper from "../Sliders/CustomSwiper";
 import Link from "next/link";
 import { request } from "@/request";
 import { carContext } from "@/context/CarContext";
-import Loading from "@/app/(public)/loading";
+import Loading from "@/app/[locale]/(public)/loading";
 import { REST } from "@/constants/enpoint";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 export default function Large_car() {
   const { dispatch } = useContext(carContext);
   const [popular, setPopular] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
-
+  const { t } = useTranslation();
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setIsLoading(true);
-        const res = await request.get(`${REST.CARS}cars/2`);
-        setPopular(res?.data);
-      } catch (err) {
-       console.log(err);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-  
-    fetchData();
-  
-  }, []); // Boş bağımlılık listesi, useEffect'in yalnızca ilk renderda çalışmasını sağlar
-  
+    getData();
+  }, []);
+
+  async function getData() {
+    try {
+      setIsLoading(true);
+      const res = await request.get(`${REST.CARS}cars/2`);
+      setPopular(res?.data);
+      setIsLoading(false);
+    } catch (err) {
+      // toast.error(err?.message);
+      console.log(err);
+    } finally {
+      setIsLoading(false);
+    }
+  }
 
   const handlePage = async () => {
     setPage(1);
@@ -42,9 +43,10 @@ export default function Large_car() {
     try {
       const res = await request.get(`${REST.CARS}cars/2?page=${page + 1}`);
       setPopular(res?.data);
-      setPage(prevPage => prevPage + 1);
+      setPage((prevPage) => prevPage + 1);
     } catch (err) {
-     console.log(err);
+      // toast.error(err?.message);
+      console.log(err);
     } finally {
       setIsLoading(false);
     }
@@ -59,16 +61,12 @@ export default function Large_car() {
             <li
               key={e.id}
               style={{
-                backgroundImage: `url(https://rent-${e?.image[0]?.body.replace(
-                  "/home/portofin/",
-                  ""
-                )})`,
+                backgroundImage: `url(https://backend.intechs.uz/car/v1/image/${e?.image[0]?.id})`,
               }}
             >
-              {console.log(e?.image[0]?.body.replace("/home/portofin/", ""))}
               <div className="head_card">
                 <p>{e?.brand}</p>
-               
+
                 <CustomizedRating />
               </div>
               <div className="food_card">
@@ -78,11 +76,11 @@ export default function Large_car() {
                 <Link href={`order/${e?.id}`}>
                   {" "}
                   <Button
-                      loading={isLoading}
-                      loadingIndicator={
-                        <CircularProgress color="secondary" size={20} />
-                      }
-                      loadingPosition="end"
+                    loading={isLoading}
+                    loadingIndicator={
+                      <CircularProgress color="secondary" size={20} />
+                    }
+                    loadingPosition="end"
                     onClick={() =>
                       dispatch({
                         type: "add-to-cart",
@@ -95,7 +93,7 @@ export default function Large_car() {
                     variant="contained"
                     style={{ background: "#FEC31D" }}
                   >
-                    Rent Now
+                    Rent now
                   </Button>
                 </Link>
               </div>
@@ -106,18 +104,16 @@ export default function Large_car() {
       <CustomSwiper popular={popular} loading={isLoading} />
 
       <Button
-          loading={isLoading}
-          loadingIndicator={
-            <CircularProgress color="secondary" size={20} />
-          }
-          loadingPosition="end"
+        loading={isLoading}
+        loadingIndicator={<CircularProgress color="secondary" size={20} />}
+        loadingPosition="end"
         type="submit"
         className="btn"
         variant="text"
         onClick={handlePage}
         style={{ backgroundColor: "var(--white)", color: "" }}
       >
-        Show more
+        {t("car_button")}
       </Button>
     </div>
   );

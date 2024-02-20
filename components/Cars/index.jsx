@@ -1,24 +1,24 @@
 "use client";
-import Tabs from "../Tabs";
-
-
+import { useEffect } from "react";
+import Tab from "../Tabs";
 import "./Cars.scss";
-
+import { request } from "@/request";
+import { useTranslation } from "react-i18next";
 
 const Cars = () => {
- 
+ const{t}=useTranslation()
 
   return (
     <section className="cars" id="brands">
       <div className="container_custom">
         <div className="cars_content">
-          <h3>Most popular car rental deals</h3>
+          <h3>{t('car_title')}</h3>
           <p>
-          A high-performing car rental system and website in AE
+       {t('car_desc')}
           </p>
         </div>
 
-        <Tabs />
+        <Tab />
       </div>
     </section>
   );

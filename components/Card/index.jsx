@@ -1,15 +1,17 @@
 "use client";
-import { useEffect, useState } from "react";
-import PropTypes from "prop-types";
-import { request } from "@/request";
-import { REST } from "@/constants/enpoint";
+import React, { useContext, useEffect, useState } from "react";
+import { carContext } from "@/context/CarContext";
 import CarCarousel from "../Sliders/Car_carusel";
 import Image from "next/image";
+
+import { request } from "@/request";
+import { REST } from "@/constants/enpoint";
 import { Button, CircularProgress } from "@mui/material";
 
 import "./Card.scss";
 
 export default function Card_Custom({ id }) {
+  // const { carProducts } = useContext(carContext);
   const [popular, setPopular] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [booking, setBooking] = useState({
@@ -19,34 +21,9 @@ export default function Card_Custom({ id }) {
     from_destination: "",
   });
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setIsLoading(true);
-        const res = await request.get(`${REST.CARS}car/${id}`);
-        setPopular(res?.data);
-      } catch (err) {
-        toast.error(err?.message);
-      } finally {
-        setIsLoading(false);
-      }
-    };
+    getDataId();
+  }, []);
 
-    fetchData();
-  }, [id]); // Boş bağımlılık listesi, useEffect'in yalnızca ilk renderda çalışmasını sağlar
-
-  // async function getDataId() {
-  //   try {
-  //     setIsLoading(true);
-  //     const res = await request.get(`${REST.CARS}car/${id}`);
-  //     setPopular(res?.data);
-  //     // console.log(res);
-  //     setIsLoading(false);
-  //   } catch (err) {
-  //     console.log(err);
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // }
   const submit = (e) => {
     e.preventDefault();
   };
@@ -76,6 +53,21 @@ export default function Card_Custom({ id }) {
     }
   };
 
+  async function getDataId() {
+    try {
+      setIsLoading(true);
+      const res = await request.get(`${REST.CARS}car/${id}`);
+      setPopular(res?.data);
+      // console.log(res);
+      setIsLoading(false);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  console.log(popular);
   return (
     <div className="order">
       <div className="container_custom">
@@ -198,12 +190,4 @@ export default function Card_Custom({ id }) {
       </div>
     </div>
   );
-
-
-
-  
-
 }
-Card_Custom.propTypes = {
-  id: PropTypes.string,
-};
